@@ -38,9 +38,6 @@ async function AuthenticateUser(email, password) {
         id:userCheck._id,
         name:userCheck.name,
         email:userCheck.email,
-        about:userCheck.about,
-        tags:userCheck.tags,
-        joinedOn:userCheck.joinedOn,
         token:token,
         status:true
       }
