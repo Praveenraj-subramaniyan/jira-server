@@ -3,13 +3,13 @@ var router = express.Router();
 const { AuthorizeUser } = require("../Controller/loginController");
 const {
   CreateTask,
-  GetAllQuestion,
+  GetAllTask,
   DeleteQuestion,
 } = require("../Controller/taskController");
 
 router.get("/", async function (req, res, next) {
   try {
-    res.json(await GetAllQuestion());
+    res.json(await GetAllTask());
   } catch (error) {
     console.log(error);
     res.status(500).send("Server Busy");

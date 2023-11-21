@@ -16,10 +16,10 @@ async function CreateTask(newTask) {
   }
 }
 
-async function GetAllQuestion() {
+async function GetAllTask() {
   try {
-    const questionList = await Questions.find().lean().sort({ askedOn: -1 });
-    return questionList;
+    const TaskList = await Task.find().lean();
+    return TaskList;
   } catch (error) {
     console.log(error);
     return "Server Busy";
@@ -44,4 +44,4 @@ async function DeleteQuestion(id, email) {
 }
 
 
-module.exports = { CreateTask, GetAllQuestion, DeleteQuestion,  };
+module.exports = { CreateTask, GetAllTask, DeleteQuestion,  };
