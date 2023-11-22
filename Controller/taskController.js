@@ -26,6 +26,22 @@ async function GetAllTask() {
   }
 }
 
+
+async function updateStatus(taskId,status) {
+  try {
+    const taskToUpdate = await Task.findById(taskId);
+    if (!taskToUpdate) {
+      return "Task not found";
+    }
+    taskToUpdate.status = status;
+    await taskToUpdate.save();
+    return true;
+  } catch (error) {
+    console.log(error);
+    return "Server Busy";
+  }
+  }
+
 async function DeleteQuestion(id, email) {
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -44,4 +60,4 @@ async function DeleteQuestion(id, email) {
 }
 
 
-module.exports = { CreateTask, GetAllTask, DeleteQuestion,  };
+module.exports = { CreateTask, GetAllTask,updateStatus, DeleteQuestion,  };
