@@ -74,7 +74,7 @@ async function updateStatus(taskId,status) {
       }
       }
 
-async function DeleteQuestion(id, email) {
+async function DeleteTask(id, email) {
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return "Invalid";
@@ -89,4 +89,4 @@ async function DeleteQuestion(id, email) {
 }
 
 
-module.exports = { CreateTask, GetAllTask,updateStatus, DeleteQuestion, updateSumarry,updatePriority};
+module.exports = { CreateTask, GetAllTask,updateStatus, DeleteTask, updateSumarry,updatePriority};

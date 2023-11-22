@@ -7,7 +7,7 @@ const {
   updateStatus,
   updateSumarry,
   updatePriority, 
-  DeleteQuestion,
+  DeleteTask,
 } = require("../Controller/taskController");
 
 router.get("/", async function (req, res, next) {
@@ -91,7 +91,7 @@ router.delete("/delete/:id", async function (req, res, next) {
     if (loginCredentials === false) {
       res.status(200).send("Invalid");
     } else {
-      res.json(await DeleteQuestion(req.params.id, loginCredentials.email));
+      res.json(await DeleteTask(req.params.id));
     }
   } catch (error) {
     console.log(error);
