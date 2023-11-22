@@ -6,7 +6,7 @@ const {
   GetAllTask,
   updateStatus,
   updateSumarry,
-  updatePriority,
+  updatePriority, 
   DeleteQuestion,
 } = require("../Controller/taskController");
 
