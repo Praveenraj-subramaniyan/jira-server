@@ -74,6 +74,22 @@ async function updateStatus(taskId,status) {
       }
       }
 
+      async function updateDate(taskId,date) {
+        try {
+          const taskToUpdate = await Task.findById(taskId);
+          if (!taskToUpdate) {
+            return "Task not found";
+          }
+          console.log(date.split("T")[0])
+          taskToUpdate.date = date.split("T")[0];
+          await taskToUpdate.save();
+          return true;
+        } catch (error) {
+          console.log(error);
+          return "Server Busy";
+        }
+        }
+
 async function DeleteTask(id, email) {
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -89,4 +105,4 @@ async function DeleteTask(id, email) {
 }
 
 
-module.exports = { CreateTask, GetAllTask,updateStatus, DeleteTask, updateSumarry,updatePriority};
+module.exports = { CreateTask, GetAllTask,updateStatus, DeleteTask, updateSumarry,updatePriority,updateDate};

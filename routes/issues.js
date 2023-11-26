@@ -8,6 +8,7 @@ const {
   updateSumarry,
   updatePriority, 
   DeleteTask,
+  updateDate,
 } = require("../Controller/taskController");
 
 router.get("/", async function (req, res, next) {
@@ -77,6 +78,22 @@ router.patch("/update/priority", async function (req, res, next) {
       res.status(400).send("Invalid");
     } else {
       res.json(await updatePriority(taskId,priority ));
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("Server Busy");
+  }
+});
+
+router.patch("/update/date", async function (req, res, next) {
+  const auth_token = req.headers.authorization.split(" ")[1];
+  const {taskId, date} = req.body;
+  try {
+    var loginCredentials = await AuthorizeUser(auth_token);
+    if (loginCredentials === false) {
+      res.status(400).send("Invalid");
+    } else {
+      res.json(await updateDate(taskId,date ));
     }
   } catch (error) {
     console.log(error);
